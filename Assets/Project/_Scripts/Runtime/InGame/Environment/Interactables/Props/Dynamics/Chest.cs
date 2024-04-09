@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DG.Tweening;
 using Project._Scripts.Runtime.InGame.Environment.Interactables.Base;
 using Project._Scripts.Runtime.Library.Controller;
 using Project._Scripts.Runtime.Managers.Manager;
@@ -17,8 +18,10 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
     public GameObject CoinPrefab;
     public Transform CoinSpawnPosition;
 
-    public int CoinCount;
-
+    [Header("Chest Properties")]
+    [Range(1, 50)]public int CoinCount = 15;
+    [Range(0, 5f)]public float SpawnForce = 2.5f;
+    [Range(0, .5f)]public float TimeBetweenCoins = .05f;
     private void Start()
     {
       _animator = GetComponent<Animator>();
@@ -49,12 +52,11 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
       for (int i = 0; i < CoinCount; i++)
       {
         GameObject coin = Instantiate(CoinPrefab, CoinSpawnPosition.position, Quaternion.identity, null);
-        ManagerContainer.Instance.GetInstance<AudioManager>().PlayAudio("CoinDrop");
+        // ManagerContainer.Instance.GetInstance<AudioManager>().PlayAudio("CoinDrop");
         coin.GetComponent<SpriteRenderer>().sortingOrder = i;
-        Vector2 forceDirection = new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(5f, 20f));
+        Vector2 forceDirection = new Vector2(Random.Range(-SpawnForce, SpawnForce), Random.Range(SpawnForce*(2/3), SpawnForce*(20/7.5f)));
         coin.GetComponent<Rigidbody2D>().AddForce(forceDirection, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(.05f);
-        //
+        yield return new WaitForSeconds(TimeBetweenCoins);
       }
     }
     public void ANIM_EVENT_DropCoin()

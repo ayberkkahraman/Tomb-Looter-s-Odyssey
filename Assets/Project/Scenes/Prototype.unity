@@ -509,7 +509,7 @@ Transform:
   m_GameObject: {fileID: 674989096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.119999886, y: -1.3900003, z: -10}
+  m_LocalPosition: {x: 2.166, y: -0.529, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -797,8 +797,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1316707399
+  m_SortingLayer: -4
   m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1645,7 +1645,7 @@ Tilemap:
   - first: {x: 1, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 28
+      m_TileIndex: 31
       m_TileSpriteIndex: 28
       m_TileMatrixIndex: 0
       m_TileColorIndex: 27
@@ -1920,14 +1920,14 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 392024e55a3530549b954602e65032f7, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 756be10d203717e4b814fd286d8756e3, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 31439cbc4dd805f4c86d416f4bf10827, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: d3dbbb99dac1df042846b44d4de0eeed, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 9ef53d347b6b72a45a0575d7bca4b6e3, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: bca2d56dcc78723428f68493d2f8e2e3, type: 2}
   - m_RefCount: 1
@@ -1990,7 +1990,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 1089604847, guid: bd45bb87fec5b61448065e085e64b625, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 1647944838, guid: bd45bb87fec5b61448065e085e64b625, type: 3}
+    m_Data: {fileID: 827918301, guid: bd45bb87fec5b61448065e085e64b625, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1475675988, guid: bd45bb87fec5b61448065e085e64b625, type: 3}
   - m_RefCount: 2
@@ -2366,7 +2366,7 @@ Transform:
   m_GameObject: {fileID: 1383903759}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.119999886, y: -1.3900003, z: -10}
+  m_LocalPosition: {x: 2.166, y: -0.529, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3517,11 +3517,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1028949218294784642, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.119999886
+      value: 2.166
       objectReference: {fileID: 0}
     - target: {fileID: 1028949218294784642, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3900003
+      value: -0.529
       objectReference: {fileID: 0}
     - target: {fileID: 1028949218294784642, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3557,12 +3557,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335079699806411161, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Darnia
       objectReference: {fileID: 0}
-    - target: {fileID: 8859395698989746869, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fd7cc56c142e3d841a339f1242510fe2, type: 2}
+    - target: {fileID: 5472865437537976375, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
+      propertyPath: MovementSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3641,6 +3641,14 @@ PrefabInstance:
     - target: {fileID: 591456528819130769, guid: 00409ef6388949c4687d12e88dbda584, type: 3}
       propertyPath: m_Name
       value: Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988898628007498256, guid: 00409ef6388949c4687d12e88dbda584, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988898628007498256, guid: 00409ef6388949c4687d12e88dbda584, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6389843073771296495, guid: 00409ef6388949c4687d12e88dbda584, type: 3}
       propertyPath: m_LocalPosition.x

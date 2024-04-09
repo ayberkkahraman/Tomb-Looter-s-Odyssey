@@ -25,20 +25,20 @@ namespace Project._Scripts.Runtime.InGame.Environment.Collectibles
 
     protected virtual void DefaultCollectHandler()
     {
-      ManagerContainer.Instance.GetInstance<AudioManager>().PlayAudio("Collect");
+      // ManagerContainer.Instance.GetInstance<AudioManager>().PlayAudio("Collect");
       Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-      if(other.gameObject.layer != LayerMask.NameToLayer($"Player")) return;
+      if(!other.gameObject.CompareTag("Player")) return;
 
       OnCollectableCollectedHandler?.Invoke();
     }
     
     private void OnTriggerStay2D(Collider2D other)
     {
-      if(other.gameObject.layer != LayerMask.NameToLayer($"Player")) return;
+      if(!other.gameObject.CompareTag("Player")) return;
 
       OnCollectableCollectedHandler?.Invoke();
     }

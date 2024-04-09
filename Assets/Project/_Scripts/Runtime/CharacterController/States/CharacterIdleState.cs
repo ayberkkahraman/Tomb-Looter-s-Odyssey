@@ -1,6 +1,5 @@
 ﻿using Project._Scripts.Runtime.CharacterController.StateFactory;
 using Project._Scripts.Runtime.Library.Controller;
-using Project._Scripts.Runtime.Managers.Manager;
 using Project._Scripts.Runtime.Managers.ManagerClasses;
 using UnityEngine;
 
@@ -8,9 +7,7 @@ namespace Project._Scripts.Runtime.CharacterController.States
 {
   public class CharacterIdleState : CharacterBaseState
   {
-    private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
     private static readonly int Attack = Animator.StringToHash("Attack");
-    private static readonly int Dash = Animator.StringToHash("Dash");
 
     public CharacterIdleState(CharacterStateMachine.CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory)
     {
@@ -30,7 +27,6 @@ namespace Project._Scripts.Runtime.CharacterController.States
     public override void EnterState()
     {
       Context.CurrentMovementSpeed = Context.MovementSpeed;
-      Context.Animator.SetBool(IsGrounded, true);
       Context.Rigidbody2D.velocity = Vector2.zero;
     }
     public override void FixedUpdateState()
