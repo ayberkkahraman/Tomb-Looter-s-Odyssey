@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Character
   - Water
   - UI
   - 
@@ -40,4 +40,34 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Carpet
+    uniqueID: 1981652679
+    locked: 0
+  - name: Grass
+    uniqueID: 3722136133
+    locked: 0
+  - name: Pool
+    uniqueID: 3558368787
+    locked: 0
+  - name: Rail
+    uniqueID: 105698431
+    locked: 0
+  - name: Stairs
+    uniqueID: 3051065121
+    locked: 0
+  - name: Water
+    uniqueID: 4264470327
+    locked: 0
+  - name: Floor
+    uniqueID: 1316707399
+    locked: 0
+  - name: Wall
+    uniqueID: 1228795719
+    locked: 0
+  - name: Prop
+    uniqueID: 332429749
+    locked: 0
+  - name: Character
+    uniqueID: 1972321603
     locked: 0

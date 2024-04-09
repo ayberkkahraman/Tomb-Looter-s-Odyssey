@@ -57,18 +57,16 @@ namespace Project._Scripts.Runtime.CharacterController.States
     }
     public override void CheckSwitchStates()
     {
-      
       Context.Animator.SetBool(IsGrounded, Context.IsGrounded());
-      var isBlocking = InputController.Block().HasInputPerformed();
 
-      if (AbilityManager.IsActive("Block"))
-      {
-        Context.Unit.IsVulnerable = isBlocking;
       
-        Context.Animator.SetBool(IsBlocking, isBlocking);
-      }
-      
-      if (!isBlocking && Context.IsGrounded() && AbilityManager.IsActive("Dash") && InputController.Dash().HasInputTriggered() && Context.DashCooldown >= Context.DefaultDashCooldown)
+      if 
+      (
+        Context.IsGrounded() && 
+        AbilityManager.IsActive("Dash") && 
+        InputController.Dash().HasInputTriggered() && 
+        Context.DashCooldown >= Context.DefaultDashCooldown
+      )
       {
         Context.Animator.SetTrigger(Dash);
         ManagerContainer.Instance.GetInstance<AudioManager>().PlayAudio("Dash");
@@ -86,19 +84,18 @@ namespace Project._Scripts.Runtime.CharacterController.States
             Context.Animator.SetTrigger(Attack);
             Context.Unit.CurrentCooldown = 0;
           }
-            
         }
       }
         
-      if(Context.IsMoving() && !isBlocking){SwitchState(Factory.Walk());}
+      if(Context.IsMoving()){SwitchState(Factory.Walk());}
 
-      if (InputController.Jump().HasInputTriggered() && !isBlocking  && AbilityManager.IsActive("Jump"))
-      {
-        Context.CurrentJumpBuffer = Context.DefaultJumpBuffer;
+      if (!InputController.Jump().HasInputTriggered() || !AbilityManager.IsActive("Jump"))
+        return;
+      
+      Context.CurrentJumpBuffer = Context.DefaultJumpBuffer;
         
-        if(Context.CanJump())
-          SwitchState(Factory.Jump(Vector2.zero));
-      }
+      if(Context.CanJump())
+        SwitchState(Factory.Jump(Vector2.zero));
     }
     public override void InitializeSubState()
     {
