@@ -143,7 +143,7 @@ namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
     #endregion
     #region Condition Configuration
     public int Direction() => IsMovingRight() ? 1 : -1;
-    public bool IsMoving() => InputDirection.x != 0;
+    public bool IsMoving() => InputDirection != Vector2.zero;
     public bool IsMovingRight() => transform.rotation.y == 0;
 
     #endregion
