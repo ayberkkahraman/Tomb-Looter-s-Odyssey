@@ -1,0 +1,19 @@
+{
+    "name": "Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynamics",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f5c6210d5eda02e469947bfd99a77168",
+        "GUID:4c653bfe61374814d9aff83f82b91b19",
+        "GUID:d18d5180f39d5ef439b0fe045c196620",
+        "GUID:d1a5c103371de8b44afabf4b8d8b5616"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

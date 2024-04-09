@@ -1,0 +1,17 @@
+{
+    "name": "Project._Scripts.Runtime.InGame.Environment.Interactables.Base",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f3b0c42c9ecc0b245bf631111f820cb8",
+        "GUID:5871bbe2ab7fe684d9945d275535239d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

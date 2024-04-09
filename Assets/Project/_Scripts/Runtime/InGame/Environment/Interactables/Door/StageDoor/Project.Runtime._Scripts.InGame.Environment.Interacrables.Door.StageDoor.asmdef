@@ -1,0 +1,16 @@
+{
+    "name": "Project.Runtime._Scripts.InGame.Environment.Interacrables.Door.StageDoor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d0265876febfa3d458b27ee191eb0685"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

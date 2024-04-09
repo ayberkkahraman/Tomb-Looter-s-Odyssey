@@ -1,0 +1,20 @@
+{
+    "name": "Project._Scripts.Runtime.InGame.Environment.Interactables.Props.TutorialSign",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d0265876febfa3d458b27ee191eb0685",
+        "GUID:f3b0c42c9ecc0b245bf631111f820cb8",
+        "GUID:f5c6210d5eda02e469947bfd99a77168",
+        "GUID:4c653bfe61374814d9aff83f82b91b19",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
