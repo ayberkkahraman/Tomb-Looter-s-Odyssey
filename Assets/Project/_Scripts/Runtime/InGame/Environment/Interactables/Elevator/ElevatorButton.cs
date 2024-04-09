@@ -1,7 +1,6 @@
 using Project._Scripts.Runtime.CharacterController.CharacterStateMachine;
 using Project._Scripts.Runtime.InGame.Environment.Interactables.Base;
 using Project._Scripts.Runtime.Interfaces;
-using Project._Scripts.Runtime.Library.Controller;
 using UnityEngine;
 
 namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Elevator
@@ -34,21 +33,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Elevator
 
             ElevatorPlatform.OnButtonTriggeredHandler();
         }
-
-
-        private void Update()
-        {
-            if (!IsInteractable)
-                return;
-            
-            if (!InputController.Attack().HasInputTriggered())
-                return;
-            
-            if (CharacterStateMachine.IsGrounded())
-            {
-                Interact();
-            }
-        }
+        
 
         public void Activation(ref bool activated)
         {

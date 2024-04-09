@@ -1,5 +1,4 @@
 ﻿using Project._Scripts.Runtime.CharacterController.StateFactory;
-using Project._Scripts.Runtime.Library.Controller;
 using UnityEngine;
 
 namespace Project._Scripts.Runtime.CharacterController.States
@@ -31,7 +30,6 @@ namespace Project._Scripts.Runtime.CharacterController.States
     }
     public override void EnterState()
     {
-      Context.CurrentJumpBuffer = Context.DefaultJumpBuffer;
       Context.Animator.SetBool(IsGrounded, false);
     }
     public override void FixedUpdateState()
@@ -40,7 +38,6 @@ namespace Project._Scripts.Runtime.CharacterController.States
     }
     public override void UpdateState()
     {
-      Context.CurrentCoyoteTimer -= Time.deltaTime;
       CheckSwitchStates();
       
       Context.SetRotation(Context.InputDirection.x);
@@ -55,13 +52,7 @@ namespace Project._Scripts.Runtime.CharacterController.States
     }
     public override void CheckSwitchStates()
     {
-      if(Context.IsGrounded()) SwitchState(Factory.Idle());
-      
-      if (!InputController.Jump().HasInputTriggered())
-        return;
 
-      if(Context.CurrentCoyoteTimer > 0)
-        SwitchState(Factory.Jump(Context.InputDirection));
     }
     public override void InitializeSubState()
     {

@@ -30,7 +30,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props
         {
             CharacterStateMachine.CurrentState.SwitchState(CharacterStateMachine.StateFactory.Jump(Vector2.zero, true));
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
-            _rigidbody2D.AddForce(Vector2.up * (Force * (Mathf.Abs(CharacterStateMachine.FallingVelocity / 5.75f) +.025f)), ForceMode2D.Impulse);
+            // _rigidbody2D.AddForce(Vector2.up * (Force * (Mathf.Abs(CharacterStateMachine.FallingVelocity / 5.75f) +.025f)), ForceMode2D.Impulse);
             
             _animator.SetTrigger(Interact);
 

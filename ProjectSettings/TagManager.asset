@@ -38,9 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Carpet
     uniqueID: 1981652679
     locked: 0
@@ -70,4 +67,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 1972321603
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

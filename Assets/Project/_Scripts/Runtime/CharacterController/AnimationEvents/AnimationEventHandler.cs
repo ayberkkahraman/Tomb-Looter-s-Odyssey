@@ -1,5 +1,4 @@
-﻿using System;
-using Project._Scripts.Runtime.Library.SubSystems;
+﻿using Project._Scripts.Runtime.Library.SubSystems;
 using Project._Scripts.Runtime.Managers.Manager;
 using Project._Scripts.Runtime.Managers.ManagerClasses;
 using UnityEngine;
@@ -39,7 +38,7 @@ namespace Project._Scripts.Runtime.CharacterController.AnimationEvents
     {
       _animator.SetTrigger(Dash);
       _characterStateMachine.Rigidbody2D.AddForce(transform.right * 40f, ForceMode2D.Impulse);
-      _characterStateMachine.DashCooldown = 0f;
+      // _characterStateMachine.DashCooldown = 0f;
     }
   }
 }

@@ -13,14 +13,16 @@ namespace Project._Scripts.Runtime.CharacterController.States
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int Dash = Animator.StringToHash("Dash");
 
-    public bool CanMove { get; set; }
-    public bool CanRotate { get; set; }
+    private Vector2 _movementDirection;
+    
+    private static readonly int DirectionX = Animator.StringToHash("DirectionX");
+    private static readonly int DirectionY = Animator.StringToHash("DirectionY");
     public CharacterWalkState(CharacterStateMachine.CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory)
     {
     }
     protected override void AccelerationConfiguration(float multiplier = 1, bool rotationSmooth = true)
     {
-
+      _movementDirection = Context.InputDirection;
     }
     protected override void RotationConfiguration(float multiplier = 1)
     {
@@ -34,16 +36,12 @@ namespace Project._Scripts.Runtime.CharacterController.States
     {
       Context.Animator.SetBool(IsGrounded, true);
       Context.Animator.SetBool(IsMoving, true);
-      Context.ResetCoolDowns();
     }
     public override void UpdateState()
     {
       CheckSwitchStates();
-      
-      Context.UpdateJumpBuffer();
-      AccelerationConfiguration();
 
-      Context.SetRotation(Context.InputDirection.x);
+      AccelerationConfiguration();
     }
     public override void LateUpdateState()
     {
@@ -60,43 +58,32 @@ namespace Project._Scripts.Runtime.CharacterController.States
 
     public override void CheckSwitchStates()
     {
-      if (!Context.IsGrounded())
-      {
-        Context.Animator.SetBool(IsGrounded, Context.IsGrounded());
-        if(Context.CanJump() == false)
-          SwitchState(Factory.Fall());
-      }
-      
-      if (Context.IsGrounded() && AbilityManager.IsActive("Dash") && InputController.Dash().HasInputTriggered() && Context.DashCooldown >= Context.DefaultDashCooldown)
+      if (AbilityManager.IsActive("Dash") && InputController.Dash().HasInputTriggered())
       {
         ManagerContainer.Instance.GetInstance<AudioManager>().PlayAudio("Dash");
         Context.Animator.SetTrigger(Dash);
         Context.Rigidbody2D.AddForce(Context.transform.right * 30f, ForceMode2D.Impulse);
-        Context.DashCooldown = 0f;
+        // Context.DashCooldown = 0f;
       }
       
       if (InputController.Attack().HasInputTriggered() && AbilityManager.IsActive("Attack"))
       {
-        if (Context.IsGrounded())
-        {
+
           if (Context.Unit.CurrentCooldown >= Context.Unit.UnitData.AttackCooldown)
           {
             Context.Animator.SetTrigger(Attack);
             Context.Unit.CurrentCooldown = 0;
           }
-        }
+        
       }
       
-      if(!Context.IsMovementButtonPressed && Context.IsGrounded()){SwitchState(Factory.Idle());}
-
-      if (!InputController.Jump().HasInputTriggered())
-        return;
-      if(! AbilityManager.IsActive("Jump")) return;
       
-      Context.CurrentJumpBuffer = Context.DefaultJumpBuffer;
-        
-      if(Context.CanJump())
-        SwitchState(Factory.Jump(Context.InputDirection));
+      if(!Context.IsMovementButtonPressed){SwitchState(Factory.Idle());}
+      else
+      {
+        SetAnimations();
+      }
+
     }
     public override void InitializeSubState()
     {
@@ -112,7 +99,13 @@ namespace Project._Scripts.Runtime.CharacterController.States
     /// </summary>
     public void Move()
     {
-      Context.Rigidbody2D.AddForce(new Vector3(Context.InputDirection.x * (Context.CurrentMovementSpeed - Context.Rigidbody2D.velocity.magnitude) * Context.Rigidbody2D.gravityScale, Context.InputDirection.y,0));
+      Context.Rigidbody2D.MovePosition(Context.Rigidbody2D.position + _movementDirection * (Time.fixedDeltaTime * Context.CurrentMovementSpeed));
+    }
+
+    public void SetAnimations()
+    {
+      Context.Animator.SetFloat(DirectionX, _movementDirection.x);
+      Context.Animator.SetFloat(DirectionY, _movementDirection.y);
     }
   }
 }

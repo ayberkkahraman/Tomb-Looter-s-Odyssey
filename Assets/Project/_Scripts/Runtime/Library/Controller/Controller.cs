@@ -128,7 +128,7 @@ namespace Project._Scripts.Runtime.Library.Controller
                 {
                     ""name"": ""up"",
                     ""id"": ""f53d18d1-7d1c-40bb-ae90-e86f85ca208b"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -139,7 +139,7 @@ namespace Project._Scripts.Runtime.Library.Controller
                 {
                     ""name"": ""down"",
                     ""id"": ""087ea06f-14c5-43f6-90e0-c7104ff95e35"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

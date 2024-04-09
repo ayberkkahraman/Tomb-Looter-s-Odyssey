@@ -38,8 +38,7 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
     {
       foreach (var ability in Abilities)
       {
-        Debug.Log($"{ability.Name} " + SaveManager.LoadData($"{ability.Name}", false));
-        
+        // Debug.Log($"{ability.Name} " + SaveManager.LoadData($"{ability.Name}", false));
         ability.Active = SaveManager.LoadData($"{ability.Name}", false);
       }
     }
