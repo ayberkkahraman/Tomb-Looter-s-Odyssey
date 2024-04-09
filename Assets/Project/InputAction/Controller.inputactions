@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interaction",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "6147a8c4-d63a-404e-9bbf-0820eab56eaa",
                     "expectedControlType": "Button",
@@ -54,6 +54,24 @@
                     "name": "Grab",
                     "type": "Button",
                     "id": "769853e5-1ab6-4998-85a9-de66c436beac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Block",
+                    "type": "Button",
+                    "id": "3f39f584-066d-486a-9119-85eceafac1fb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "2057d420-0b1c-4ea3-a353-4c9575e20839",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -108,7 +126,7 @@
                 {
                     "name": "left",
                     "id": "a2e0ae46-5bfe-4cc8-9b58-0ce355cabdcb",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -119,7 +137,7 @@
                 {
                     "name": "right",
                     "id": "edae0153-9e60-4c96-b41c-caa028a16a93",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -141,7 +159,7 @@
                 {
                     "name": "",
                     "id": "b8c0eb77-bbfd-47fc-aae8-13a26fe229c0",
-                    "path": "<Keyboard>/leftAlt",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -156,18 +174,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interaction",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "371a1ace-765e-4706-b267-c62a137f6bca",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interaction",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -223,6 +241,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ad3b98f-2dad-4e07-a55b-078b0fa57b5a",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33654702-48a1-459b-b323-53fb03d6557f",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
