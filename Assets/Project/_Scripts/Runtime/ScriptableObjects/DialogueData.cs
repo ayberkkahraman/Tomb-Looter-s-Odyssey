@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Project._Scripts.Runtime.ScriptableObjects
 {
@@ -8,7 +9,7 @@ namespace Project._Scripts.Runtime.ScriptableObjects
     public class DialogueData : ScriptableObject
     {
         public List<Dialogue> Dialogues;
-        public DialogueSequenceData DialogueSequenceData;
+        public DialogueOptionData DialogueOptionData;
 
         [System.Serializable]
         public struct Dialogue

@@ -1,4 +1,5 @@
 using System;
+using Project._Scripts.Runtime.Game.UIElements;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
     {
         [Header("Dialogue")]
         public GameObject DialogueBox;
+        public DialogueOptionsHolder DialogueOptionsHolder;
         public TMP_Text DialogueText;
         public TMP_Text DialogueNameText;
         public TMP_Text CoinCount;
@@ -16,8 +18,8 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
 
         private void Start()
         {
-            if(CoinCount.gameObject.activeInHierarchy)
-                CoinCount.text = SaveManager.LoadData("Coin", 0).ToString();
+            // if(CoinCount.gameObject.activeInHierarchy)
+            //     CoinCount.text = SaveManager.LoadData("Coin", 0).ToString();
         }
         
         public void UpdateCoinText(int coinCount)
@@ -30,6 +32,15 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
             CoinCount.text = SaveManager.LoadData("Coin", 0).ToString();
         }
 
+        public void SetDialogueOptions(int optionsCount = 1)
+        {
+            DialogueOptionsHolder.MaxIndexCount = optionsCount;
+            for (int i = 0; i < optionsCount; i++)
+            {
+                DialogueOptionsHolder.transform.GetChild(i).gameObject.SetActive(true);
+            }
+            DialogueOptionsHolder.DialogueOptions[0].Select();
+        }
         public void UpdateDialogueText(string text)
         {
             DialogueText.text = text;
