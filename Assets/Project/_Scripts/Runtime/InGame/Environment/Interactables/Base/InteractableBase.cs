@@ -14,6 +14,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
     protected Collider2D Collider2D;
 
     public bool DestroyAfterTriggerEnd;
+    public bool InteractOnTrigger = true;
     
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,7 +23,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
       Collider2D = other;
 
       IsInteractable = true;
-      TriggerInteractCallback?.Invoke();
+      if(InteractOnTrigger)TriggerInteractCallback?.Invoke();
     }
 
     public virtual void OnTriggerExit2D(Collider2D other)
@@ -32,9 +33,9 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
       Collider2D = null;
 
       IsInteractable = false;
-      EndInteractCallback?.Invoke();
+      if(InteractOnTrigger)EndInteractCallback?.Invoke();
       
-      if(DestroyAfterTriggerEnd) Destroy(gameObject);
+      if(DestroyAfterTriggerEnd && InteractOnTrigger) Destroy(gameObject);
     }
   }
 }
