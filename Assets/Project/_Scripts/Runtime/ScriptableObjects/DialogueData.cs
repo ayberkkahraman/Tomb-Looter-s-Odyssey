@@ -8,6 +8,7 @@ namespace Project._Scripts.Runtime.ScriptableObjects
     public class DialogueData : ScriptableObject
     {
         public List<Dialogue> Dialogues;
+        public DialogueSequenceData DialogueSequenceData;
 
         [System.Serializable]
         public struct Dialogue
