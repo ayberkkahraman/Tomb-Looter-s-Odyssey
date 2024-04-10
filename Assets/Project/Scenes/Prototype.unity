@@ -9965,18 +9965,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 395716265}
     m_Modifications:
     - target: {fileID: 1028949218294784642, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028949218294784642, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028949218294784642, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028949218294784642, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.08
       objectReference: {fileID: 0}
@@ -10020,14 +10008,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Darnia
       objectReference: {fileID: 0}
-    - target: {fileID: 6233368236298945114, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6233368236298945114, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
-      propertyPath: m_SpriteSortPoint
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10056,7 +10036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5698312639316409479, guid: c4eeee0ef19a0d34e8e0e36a7778599a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 5698312639316409479, guid: c4eeee0ef19a0d34e8e0e36a7778599a, type: 3}
       propertyPath: m_LocalPosition.z
