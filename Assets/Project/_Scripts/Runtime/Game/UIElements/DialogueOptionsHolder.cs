@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project._Scripts.Runtime.Library.Controller;
+using Project._Scripts.Runtime.ScriptableObjects;
 using UnityEngine;
 
 namespace Project._Scripts.Runtime.Game.UIElements
@@ -10,6 +12,10 @@ namespace Project._Scripts.Runtime.Game.UIElements
     public List<DialogueOption> DialogueOptions { get; set; }
     public int CurrentSelectionIndex { get; set; }
     public int MaxIndexCount { get; set; }
+
+    private bool _optionsActive;
+
+    public Action<DialogueData> DialogueCallback;
 
     private void Awake()
     {
@@ -26,6 +32,13 @@ namespace Project._Scripts.Runtime.Game.UIElements
     public void Update()
     {
       SwitchOption();
+      
+      if(!_optionsActive) return;
+      
+      if(!InputController.Interact().HasInputTriggered()) return;
+      
+      DialogueCallback?.Invoke(DialogueOptions[CurrentSelectionIndex].DialogueData);
+      CloseOptions();
     }
 
     public void SwitchOption()
@@ -39,6 +52,29 @@ namespace Project._Scripts.Runtime.Game.UIElements
       {
         UpdateCurrentIndex(false);
       }
+    }
+
+    public void CloseOptions()
+    {
+      for (int i = 0; i < DialogueOptions.Count; i++)
+      {
+        DialogueOptions[i].OptionText.text = "";
+        DialogueOptions[i].gameObject.SetActive(false);
+      }
+
+      CurrentSelectionIndex = 0;
+      MaxIndexCount = 0;
+    }
+    
+    public void SetDialogueOptions(int optionsCount = 1)
+    {
+      MaxIndexCount = optionsCount;
+      for (int i = 0; i < optionsCount; i++)
+      {
+        DialogueOptions[i].gameObject.SetActive(true);
+      }
+      DialogueOptions[0].Select();
+      _optionsActive = true;
     }
 
     public void UpdateCurrentIndex(bool increase)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Project._Scripts.Runtime.Game.UIElements;
 using Project._Scripts.Runtime.Library.Controller;
 using Project._Scripts.Runtime.Managers.Manager;
 using Project._Scripts.Runtime.ScriptableObjects;
@@ -13,6 +14,7 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
   public class DialogueManager : MonoBehaviour
   {
     public UIManager UIManager { get; set; }
+    public DialogueOptionsHolder DialogueOptionsHolder;
     public DialogueData DialogueData { get; set; }
     public bool IsDialogueActive;
 
@@ -146,7 +148,9 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
 
     public void InitializeOptions()
     {
-      UIManager.SetDialogueOptions(CurrentDialogueData.DialogueOptionData.DialogueOptions.Length);
+      DialogueOptionsHolder.DialogueCallback = StartDialogue;
+      DialogueOptionsHolder.SetDialogueOptions(CurrentDialogueData.DialogueOptionData.DialogueOptions.Length);
+      UIManager.UpdateDialogueOptions(CurrentDialogueData.DialogueOptionData);
     }
 
     public IEnumerator TypeSentence(string sentence)

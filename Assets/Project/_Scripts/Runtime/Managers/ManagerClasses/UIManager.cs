@@ -1,5 +1,5 @@
-using System;
 using Project._Scripts.Runtime.Game.UIElements;
+using Project._Scripts.Runtime.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,15 +32,14 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
             CoinCount.text = SaveManager.LoadData("Coin", 0).ToString();
         }
 
-        public void SetDialogueOptions(int optionsCount = 1)
+        public void UpdateDialogueOptions(DialogueOptionData dialogueOptionData)
         {
-            DialogueOptionsHolder.MaxIndexCount = optionsCount;
-            for (int i = 0; i < optionsCount; i++)
+            for (int i = 0; i < DialogueOptionsHolder.MaxIndexCount; i++)
             {
-                DialogueOptionsHolder.transform.GetChild(i).gameObject.SetActive(true);
+                DialogueOptionsHolder.DialogueOptions[i].Initialize(dialogueOptionData.DialogueOptions[i].Sentence);
             }
-            DialogueOptionsHolder.DialogueOptions[0].Select();
         }
+        
         public void UpdateDialogueText(string text)
         {
             DialogueText.text = text;

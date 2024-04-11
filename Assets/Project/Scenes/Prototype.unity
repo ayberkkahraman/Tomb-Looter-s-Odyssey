@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f91439ea64e459190c23e2e06f1d0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueData: {fileID: 0}
   OptionText: {fileID: 1093524536}
   SelectionObject: {fileID: 961008882}
 --- !u!114 &153829798
@@ -317,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a28942213a34640a25ae63e53d1a067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueOptionsHolder: {fileID: 1813487569}
   IsDialogueActive: 0
   DialogueTypeDuration: 0.025
   Dialogues:
@@ -3727,6 +3729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f91439ea64e459190c23e2e06f1d0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueData: {fileID: 0}
   OptionText: {fileID: 1624576893}
   SelectionObject: {fileID: 272434657}
 --- !u!114 &1451570397
@@ -10389,6 +10392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f91439ea64e459190c23e2e06f1d0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueData: {fileID: 11400000, guid: d375e42feffad774e8e0c37fe8b5c7ec, type: 2}
   OptionText: {fileID: 1896885698}
   SelectionObject: {fileID: 1987549112}
 --- !u!114 &1584628667
@@ -10866,6 +10870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f91439ea64e459190c23e2e06f1d0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueData: {fileID: 11400000, guid: 5bf139dd902729b45b5bb5ba737ed353, type: 2}
   OptionText: {fileID: 1188595774}
   SelectionObject: {fileID: 1570042711}
 --- !u!1 &1813487565

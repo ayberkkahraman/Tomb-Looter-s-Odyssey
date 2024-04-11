@@ -1,10 +1,12 @@
-﻿using TMPro;
+﻿using Project._Scripts.Runtime.ScriptableObjects;
+using TMPro;
 using UnityEngine;
 
 namespace Project._Scripts.Runtime.Game.UIElements
 {
   public class DialogueOption : MonoBehaviour
   {
+    public DialogueData DialogueData;
     public TMP_Text OptionText;
     public GameObject SelectionObject;
     public DialogueOptionsHolder Holder { get; set; }
