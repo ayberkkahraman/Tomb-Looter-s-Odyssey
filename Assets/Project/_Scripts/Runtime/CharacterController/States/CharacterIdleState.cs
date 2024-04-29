@@ -1,14 +1,10 @@
 ﻿using Project._Scripts.Runtime.CharacterController.StateFactory;
-using Project._Scripts.Runtime.Library.Controller;
-using Project._Scripts.Runtime.Managers.ManagerClasses;
 using UnityEngine;
 
 namespace Project._Scripts.Runtime.CharacterController.States
 {
   public class CharacterIdleState : CharacterBaseState
   {
-    private static readonly int Attack = Animator.StringToHash("Attack");
-
     public CharacterIdleState(CharacterStateMachine.CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory)
     {
     }
@@ -48,17 +44,6 @@ namespace Project._Scripts.Runtime.CharacterController.States
     }
     public override void CheckSwitchStates()
     {
-      if (InputController.Attack().HasInputTriggered() && AbilityManager.IsActive("Attack"))
-      {
-
-          if (Context.Unit.CurrentCooldown >= Context.Unit.UnitData.AttackCooldown)
-          {
-            Context.Animator.SetTrigger(Attack);
-            Context.Unit.CurrentCooldown = 0;
-          }
-        
-      }
-        
       if(Context.IsMoving()){SwitchState(Factory.Walk());}
     }
     public override void InitializeSubState()

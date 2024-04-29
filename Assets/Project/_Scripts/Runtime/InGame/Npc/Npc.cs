@@ -44,8 +44,7 @@ namespace Project._Scripts.Runtime.InGame.Npc
     {
 
       Animator.SetBool(Interacting, true);
-
-      Character.Unit.enabled = false;
+      
       Character.enabled = false;
       
       Character.Animator.SetBool(IsMoving, false);

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using DG.Tweening;
+﻿using System.Collections;
 using Project._Scripts.Runtime.InGame.Environment.Interactables.Base;
 using Project._Scripts.Runtime.Library.Controller;
-using Project._Scripts.Runtime.Managers.Manager;
-using Project._Scripts.Runtime.Managers.ManagerClasses;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -52,7 +48,6 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
       for (int i = 0; i < CoinCount; i++)
       {
         GameObject coin = Instantiate(CoinPrefab, CoinSpawnPosition.position, Quaternion.identity, null);
-        // ManagerContainer.Instance.GetInstance<AudioManager>().PlayAudio("CoinDrop");
         coin.GetComponent<SpriteRenderer>().sortingOrder = i;
         Vector2 forceDirection = new Vector2(Random.Range(-SpawnForce, SpawnForce), Random.Range(SpawnForce*(2/3), SpawnForce*(20/7.5f)));
         coin.GetComponent<Rigidbody2D>().AddForce(forceDirection, ForceMode2D.Impulse);

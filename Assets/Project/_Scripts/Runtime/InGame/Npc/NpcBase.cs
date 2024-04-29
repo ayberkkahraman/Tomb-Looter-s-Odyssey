@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Project._Scripts.Runtime.CharacterController.CharacterInteraction;
 using Project._Scripts.Runtime.CharacterController.CharacterStateMachine;
 using Project._Scripts.Runtime.Managers.Manager;
 using Project._Scripts.Runtime.Managers.ManagerClasses;
@@ -16,8 +15,7 @@ namespace Project._Scripts.Runtime.InGame.Npc
         protected Animator Animator;
         
         public CharacterStateMachine Character;
-        public CharacterInteraction CharacterInteraction { get; set; }
-        
+
         public Action TriggerInteractCallback;
         public Action EndInteractCallback;
         protected bool IsInteractable { get; set; }
@@ -44,7 +42,6 @@ namespace Project._Scripts.Runtime.InGame.Npc
             if (DialogueIndex > Dialogues.Count - 1) DialogueIndex = Dialogues.Count - 1;
             CurrentDialogue = Dialogues[DialogueIndex];
             DialogueManager = ManagerContainer.Instance.GetInstance<DialogueManager>();
-            CharacterInteraction = Character.GetComponent<CharacterInteraction>();
             Animator = GetComponent<Animator>();
             IsInteractable = SaveManager.LoadData($"{CharacterData.Name} IsInteractable", true);
         }

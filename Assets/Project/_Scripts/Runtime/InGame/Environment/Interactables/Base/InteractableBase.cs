@@ -12,10 +12,18 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
     public Action EndInteractCallback;
 
     protected Collider2D Collider2D;
+    protected Animator Animator;
 
     public bool DestroyAfterTriggerEnd;
     public bool InteractOnTrigger = true;
     
+    protected static readonly int Interact = Animator.StringToHash("Interact");
+
+    protected void Awake()
+    {
+      Animator = GetComponent<Animator>();
+    }
+
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
       if(!other.gameObject.CompareTag("Player")) return;

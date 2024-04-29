@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Project._Scripts.Runtime.CharacterController.StateFactory;
-using Project._Scripts.Runtime.Library.SubSystems;
-using UnityEngine;
 
 namespace Project._Scripts.Runtime.CharacterController.States
 {
@@ -29,17 +27,11 @@ namespace Project._Scripts.Runtime.CharacterController.States
       {
         Factory.Initialize(),
         Factory.Idle(),
-        Factory.Jump(Vector2.zero),
         Factory.Walk(),
-        Factory.Turn(),
-        Factory.Fall(),
         Factory.Interaction(),
-        Factory.Dead(),
       };
       
       States.ToList().ForEach(_ => InitializeState());
-
-      SwitchState(Factory.Jump(Vector2.up));
 
     }
     public override void FixedUpdateState()
