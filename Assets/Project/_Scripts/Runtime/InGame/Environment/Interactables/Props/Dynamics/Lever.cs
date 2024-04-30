@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Project._Scripts.Runtime.InGame.Environment.Interactables.Base;
 using Project._Scripts.Runtime.Library.Controller;
-using UnityEngine;
 
 namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynamics
 {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using JetBrains.Annotations;
 using Project._Scripts.Runtime.Managers.ManagerClasses;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -74,8 +75,10 @@ namespace Project._Scripts.Runtime.Library.Extensions
       return layerNames.ToArray();
     }
 
-    public static void SetAndSave<T>(this T type, string dataName, T data)
+    public static void SetAndSave<T>([NotNull] this T type, string dataName, T data)
     {
+      if (type == null)
+        throw new ArgumentNullException(nameof(type));
       type = data;
       SaveManager.SaveData(dataName, type);
     }
