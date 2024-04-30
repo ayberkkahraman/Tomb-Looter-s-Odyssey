@@ -13,6 +13,8 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
 
     protected Collider2D Collider2D;
     protected Animator Animator;
+    protected Animator CharacterAnimator;
+    protected CharacterController.CharacterController.CharacterController CharacterController;
 
     public bool DestroyAfterTriggerEnd;
     public bool InteractOnTrigger = true;
@@ -29,6 +31,8 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
       if(!other.gameObject.CompareTag("Player")) return;
 
       Collider2D = other;
+      if (CharacterAnimator == null) CharacterAnimator = other.GetComponent<Animator>();
+      if (CharacterController == null) CharacterController = other.GetComponent<CharacterController.CharacterController.CharacterController>();
 
       IsInteractable = true;
       if(InteractOnTrigger)TriggerInteractCallback?.Invoke();

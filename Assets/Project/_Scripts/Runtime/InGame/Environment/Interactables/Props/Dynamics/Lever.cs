@@ -24,8 +24,11 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
       if(!IsInteractable) return;
 
       if(IsInteracting) return;
-      
-      if (InputController.Interact().HasInputTriggered()) TriggerInteractCallback?.Invoke();
+
+      if (InputController.Interact().HasInputTriggered())
+      {
+        TriggerInteractCallback?.Invoke();
+      }
     }
     #endregion
 
