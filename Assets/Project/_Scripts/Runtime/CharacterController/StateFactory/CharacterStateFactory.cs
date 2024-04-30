@@ -1,5 +1,4 @@
 using Project._Scripts.Runtime.CharacterController.States;
-using Project._Scripts.Runtime.InGame.Environment.Interactables.Door;
 
 namespace Project._Scripts.Runtime.CharacterController.StateFactory
 {
@@ -11,7 +10,6 @@ namespace Project._Scripts.Runtime.CharacterController.StateFactory
         public CharacterWalkState WalkState;
         public CharacterIdleState IdleState;
         public CharacterInteractionState InteractionState;
-        public CharacterTransportState TransportState;
 
         public CharacterStateFactory(CharacterStateMachine.CharacterStateMachine currentContext)
         {
@@ -34,12 +32,6 @@ namespace Project._Scripts.Runtime.CharacterController.StateFactory
         public CharacterBaseState Initialize()
         {
             return InitializationState ??= new InitializationState(_context, this);
-        }
-        public CharacterBaseState Transport(TransporterDoor targetDoor)
-        {
-            TransportState ??= new CharacterTransportState(_context, this, targetDoor);
-            TransportState.TargetDoor = targetDoor;
-            return TransportState;
         }
     }
 }
