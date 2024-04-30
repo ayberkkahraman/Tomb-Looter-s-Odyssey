@@ -73,8 +73,8 @@ namespace Project._Scripts.Runtime.CharacterController.States
 
     public void SetAnimations()
     {
-      Context.Animator.SetFloat(DirectionX, _movementDirection.x);
-      Context.Animator.SetFloat(DirectionY, _movementDirection.y);
+      Context.Animator.SetInteger(DirectionX, Mathf.RoundToInt(_movementDirection.x));
+      Context.Animator.SetInteger(DirectionY, Mathf.RoundToInt(_movementDirection.y));
     }
   }
 }

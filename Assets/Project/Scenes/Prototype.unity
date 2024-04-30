@@ -12465,6 +12465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Darnia
       objectReference: {fileID: 0}
+    - target: {fileID: 4451725456864435664, guid: caa18d55413f6ff43ae72bdd87adbc41, type: 3}
+      propertyPath: CharacterDirection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

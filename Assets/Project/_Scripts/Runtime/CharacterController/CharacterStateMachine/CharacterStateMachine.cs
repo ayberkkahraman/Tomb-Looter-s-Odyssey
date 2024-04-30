@@ -1,6 +1,5 @@
 ﻿using Project._Scripts.Runtime.CharacterController.StateFactory;
 using Project._Scripts.Runtime.CharacterController.States;
-using Project._Scripts.Runtime.Entity.EntitySystem.Entities;
 using Project._Scripts.Runtime.Interfaces;
 using Project._Scripts.Runtime.Library.Controller;
 using UnityEngine;
@@ -56,8 +55,6 @@ namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
     private void Update()
     {
       CurrentState.UpdateState();
-      
-      Debug.DrawRay(transform.position, transform.right, Color.red);
     }
 
     private void LateUpdate()

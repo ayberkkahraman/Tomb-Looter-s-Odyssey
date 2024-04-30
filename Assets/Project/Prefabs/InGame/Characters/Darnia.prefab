@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8859395698989746869}
   - component: {fileID: 149928315292430017}
   - component: {fileID: 5472865437537976375}
+  - component: {fileID: 4451725456864435664}
   - component: {fileID: 2660975456885912091}
   m_Layer: 0
   m_Name: Darnia
@@ -187,6 +188,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputDirection: {x: 0, y: 0}
   MovementSpeed: 4
+--- !u!114 &4451725456864435664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335079699806411161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5660b5dca54ba18e1784265df267c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterDirection: 0
 --- !u!210 &2660975456885912091
 SortingGroup:
   m_ObjectHideFlags: 0

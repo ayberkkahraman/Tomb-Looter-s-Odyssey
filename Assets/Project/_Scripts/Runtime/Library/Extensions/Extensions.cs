@@ -130,6 +130,7 @@ namespace Project._Scripts.Runtime.Library.Extensions
 
       return layerNames.ToArray();
     }
+    public static bool IsLayer(this GameObject gameObject, string layerName) => gameObject.layer == LayerMask.NameToLayer(layerName);
 
   }
 
