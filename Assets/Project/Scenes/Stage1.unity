@@ -13810,8 +13810,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196f9e51b00b439389323d75f1df652f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyAfterTriggerEnd: 0
-  InteractOnTrigger: 1
+  BaseSettings:
+    DestroyAfterTriggerEnd: 0
+    InteractOnTrigger: 1
 --- !u!1001 &8905092154750916453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13868,6 +13869,10 @@ PrefabInstance:
       propertyPath: TargetGates.Array.data[0]
       value: 
       objectReference: {fileID: 740211579}
+    - target: {fileID: 7658774701943935604, guid: 4ad6529355b3da347b1787550cb8c048, type: 3}
+      propertyPath: BaseSettings.InteractOnTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

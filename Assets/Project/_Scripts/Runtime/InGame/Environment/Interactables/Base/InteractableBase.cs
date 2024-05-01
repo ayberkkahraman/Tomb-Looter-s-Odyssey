@@ -3,16 +3,15 @@ using Project._Scripts.Runtime.CharacterController.CharacterDirectionHandler;
 using Project._Scripts.Runtime.Interfaces;
 using Project._Scripts.Runtime.Library.Extensions;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
 {
   public abstract class InteractableBase : MonoBehaviour, ITriggerable
   {
     #region Fields
+    public BaseSettings BaseSettings;
     protected bool IsInteractable { get; set; }
-    public bool DestroyAfterTriggerEnd;
-    public bool InteractOnTrigger = true;
-    
     protected static readonly int InteractAnimationHash = Animator.StringToHash("Interact");
     #endregion
 
@@ -43,7 +42,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
       if (!CharacterDirection is {}) CharacterDirection = other.GetComponent<CharacterDirection>();
 
       IsInteractable = true;
-      if(InteractOnTrigger)TriggerInteractCallback?.Invoke();
+      if(BaseSettings.InteractOnTrigger)TriggerInteractCallback?.Invoke();
     }
 
     public virtual void OnTriggerExit2D(Collider2D other)
@@ -53,11 +52,21 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
       Collider2D = null;
 
       IsInteractable = false;
+
+      if (!BaseSettings.InteractOnTrigger) return;
       
-      if(InteractOnTrigger)EndInteractCallback?.Invoke();
+      EndInteractCallback?.Invoke();
       
-      if(DestroyAfterTriggerEnd && InteractOnTrigger) Destroy(gameObject);
+      if(BaseSettings.DestroyAfterTriggerEnd)
+        Destroy(gameObject);
     }
     #endregion
+  }
+  
+  [Serializable]
+  public class BaseSettings
+  {
+    public bool DestroyAfterTriggerEnd = false;
+    public bool InteractOnTrigger = true;
   }
 }

@@ -10,8 +10,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
     public List<Gate> TargetGates = new();
     public bool IsInteracting { get; set; }
     #endregion
-
-
+    
     #region Unity Functions
     public void Start()
     {
