@@ -239,7 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dc7981f6a144529211fdb3b48983cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyAfterTriggerEnd: 0
-  InteractOnTrigger: 0
+  BaseSettings:
+    DestroyAfterTriggerEnd: 0
+    InteractOnTrigger: 0
   TargetGates:
   - {fileID: 0}
