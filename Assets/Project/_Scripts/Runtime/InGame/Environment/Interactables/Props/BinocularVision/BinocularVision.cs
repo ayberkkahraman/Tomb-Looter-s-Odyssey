@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project._Scripts.Runtime.InGame.Environment.Interactables.BinocularVision
+namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.BinocularVision
 {
     public class BinocularVision : MonoBehaviour
     {

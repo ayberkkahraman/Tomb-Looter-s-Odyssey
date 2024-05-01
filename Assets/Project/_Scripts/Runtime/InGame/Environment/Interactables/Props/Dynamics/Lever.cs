@@ -15,7 +15,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
     #region Unity Functions
     public void Start()
     {
-      TriggerInteractCallback = () => Animator.SetTrigger(Interact);
+      TriggerInteractCallback = () => Animator.SetTrigger(InteractAnimationHash);
     }
 
     private void Update()

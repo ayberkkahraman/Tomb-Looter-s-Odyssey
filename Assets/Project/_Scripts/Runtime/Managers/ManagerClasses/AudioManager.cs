@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Project._Scripts.Runtime.Managers.Manager;
-using Project._Scripts.Runtime.ScriptableObjects.Audio;
+using Project._Scripts.Runtime.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
@@ -21,14 +19,12 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
         [Space]
         [Header("PoolObjects")]
         [SerializeField] private GameObject MainSfxPoolObject;
-        [SerializeField] private GameObject EffectPoolObject;
-        [SerializeField] private GameObject SecondaryEffectSfxPoolObject;
         [SerializeField] private GameObject SecondarySfxPoolObject;
+        [SerializeField] private GameObject AmbientSfxPoolObject;
         
         private List<AudioSource> _mainSfxPool = new();
-        private List<AudioSource> _effectPool = new();
-        private List<AudioSource> _secondaryEffectPool = new();
         private List<AudioSource> _secondarySfxPool = new();
+        private List<AudioSource> _ambientSfxPool = new();
 
         private List<AudioData> _audioDatas;
 
@@ -53,7 +49,6 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
         }
         
         
-
         public void ChangeBGMAudio(string audioName)
         {
             StopAllCoroutines();
@@ -79,7 +74,6 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
         {
             if (BGMAudio.volume != 0)
             {
-                float volume = BGMAudio.volume;
                 while (BGMAudio.volume > 0)
                 {
                     BGMAudio.volume -= Time.deltaTime / 1;
@@ -111,12 +105,13 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
 
         private void Initialize()
         {
+            //-----------------------------------------------------------------------------------------------
             //------------------------------INITIALIZING THE AUDIO CHANNELS----------------------------------
+            //-----------------------------------------------------------------------------------------------
             _mainSfxPool = MainSfxPoolObject.GetComponentsInChildren<AudioSource>().ToList();
-            _effectPool = SecondaryEffectSfxPoolObject.GetComponentsInChildren<AudioSource>().ToList();
-            _secondaryEffectPool = EffectPoolObject.GetComponentsInChildren<AudioSource>().ToList();
             _secondarySfxPool = SecondarySfxPoolObject.GetComponentsInChildren<AudioSource>().ToList();
-
+            _ambientSfxPool = AmbientSfxPoolObject.GetComponentsInChildren<AudioSource>().ToList();
+            //-----------------------------------------------------------------------------------------------
         }
 
         private void InitializeAudioResources()
@@ -141,7 +136,7 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
         /// <param name="pitchVariation"></param>
         /// <param name="type"></param>
         public void PlayAudio(AudioClip clip, float volume = 1f, float pitchVariation = 0f,
-            AudioData.AudioType type = AudioData.AudioType.Effect)
+            AudioData.AudioType type = AudioData.AudioType.MainSfx)
         {
             //Null Check
             if (clip == null) return;
@@ -217,7 +212,7 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
 
             if (audioData is null)
             {
-                Debug.LogError($"There is not audio like{audioName}");
+                Debug.Log($"There is no audio like{audioName}");
                 return;
             }
 
@@ -234,13 +229,12 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
         /// <returns></returns>
         public AudioData GetAudioByName(string audioName)
         {
-            return _audioDatas.Find(x => x.name == audioName);
+            return !_audioDatas.Exists(x => x.name == audioName) 
+                ? ScriptableObject.CreateInstance<AudioData>() 
+                : _audioDatas.Find(x => x.name == audioName);
         }
 
-        public AudioData GetAudioDataByClip(AudioClip clip)
-        {
-            return _audioDatas.ToList().Find(x => x.AudioClip == clip);
-        }
+        public AudioData GetAudioDataByClip(AudioClip clip) => _audioDatas.ToList().Find(x => x.AudioClip == clip);
 
         /// <summary>
         /// Returns the available audio source channel
@@ -263,30 +257,21 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
 
                     source.Stop();
                     return source;
-                case AudioData.AudioType.Effect:
-                    if (_effectPool.Exists(x => x.isPlaying == false))
-                    {
-                        return _effectPool.Find(x => x.isPlaying == false);
-                    }
-                    source = _effectPool.OrderBy(x => x.time).Last();
-
-                    source.Stop();
-                    return source;
-                case AudioData.AudioType.SecondaryEffect:
-                    if (_secondaryEffectPool.Exists(x => x.isPlaying == false))
-                    {
-                        return _secondaryEffectPool.Find(x => x.isPlaying == false);
-                    }
-                    source = _secondaryEffectPool.OrderBy(x => x.time).Last();
-
-                    source.Stop();
-                    return source;
                 case AudioData.AudioType.SecondarySfx:
                     if (_secondarySfxPool.Exists(x => x.isPlaying == false))
                     {
                         return _secondarySfxPool.Find(x => x.isPlaying == false);
                     }
                     source = _secondarySfxPool.OrderBy(x => x.time).Last();
+
+                    source.Stop();
+                    return source;
+                case AudioData.AudioType.AmbientSfx:
+                    if (_ambientSfxPool.Exists(x => x.isPlaying == false))
+                    {
+                        return _ambientSfxPool.Find(x => x.isPlaying == false);
+                    }
+                    source = _ambientSfxPool.OrderBy(x => x.time).Last();
 
                     source.Stop();
                     return source;

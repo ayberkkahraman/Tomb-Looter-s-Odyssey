@@ -1,10 +1,9 @@
-﻿using System;
-using Project._Scripts.Runtime.Managers.Manager;
+﻿using Project._Scripts.Runtime.Managers.Manager;
 using Project._Scripts.Runtime.Managers.ManagerClasses;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project._Scripts.Runtime.Game.UIElements
+namespace Project._Scripts.Runtime.Game
 {
   public class AudioButton : MonoBehaviour
   {

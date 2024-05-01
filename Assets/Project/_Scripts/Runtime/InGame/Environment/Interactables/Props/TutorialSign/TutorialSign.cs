@@ -5,7 +5,7 @@ using Project._Scripts.Runtime.Library.Controller;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props
+namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.TutorialSign
 {
     public class TutorialSign : InteractableBase, IInteractable
     {

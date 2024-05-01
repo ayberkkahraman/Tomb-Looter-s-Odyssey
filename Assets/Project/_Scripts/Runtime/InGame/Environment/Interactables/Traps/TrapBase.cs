@@ -1,15 +1,11 @@
-﻿using System;
-using Project._Scripts.Runtime.Entity.EntitySystem;
+﻿using Project._Scripts.Runtime.Entity.EntitySystem;
 using Project._Scripts.Runtime.InGame.Environment.Interactables.Base;
-using Project._Scripts.Runtime.Managers.Manager;
-using Project._Scripts.Runtime.Managers.ManagerClasses;
 using UnityEngine;
 
 namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Traps
 {
   public class TrapBase : InteractableBase
   {
-    protected Animator Animator;
     protected LivingEntity Entity;
 
     [Range(0f,5f)]public float Cooldown = 2f;
@@ -64,7 +60,8 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Traps
 
     protected virtual void Trigger(LivingEntity entity)
     {
-        if(Entity.Health <= 0) return;
+      // ReSharper disable once RedundantJumpStatement
+      if(Entity.Health <= 0) return;
     }
   }
 }

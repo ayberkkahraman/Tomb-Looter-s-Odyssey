@@ -8,10 +8,10 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
     #region Fields
     private static readonly int IsOpen = Animator.StringToHash("IsOpen");
     #endregion
-
-
+    
     #region Unity Functions
     public void Start() => TriggerInteractCallback = TriggerGate;
+    protected override void Awake(){base.Awake(); TriggerInteractCallbackWithCondition = TriggerGate;}
     #endregion
 
     #region Gate Configuration
@@ -20,8 +20,18 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
     /// </summary>
     public void TriggerGate()
     {
-      Animator.SetTrigger(Interact);
+      Animator.SetTrigger(InteractAnimationHash);
       Animator.SetBool(IsOpen, !Animator.GetBool(IsOpen));
+    }
+  
+    /// <summary>
+    /// Triggers the Gate
+    /// </summary>
+    /// <param name="condition"></param>
+    public void TriggerGate(bool condition)
+    {
+      Animator.SetTrigger(InteractAnimationHash);
+      Animator.SetBool(IsOpen, condition);
     }
     #endregion
 

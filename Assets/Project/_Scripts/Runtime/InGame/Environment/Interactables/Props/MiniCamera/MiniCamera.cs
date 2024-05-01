@@ -5,7 +5,7 @@ using Project._Scripts.Runtime.Managers.ManagerClasses;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Project._Scripts.Runtime.InGame.Environment.Interactables.BinocularVision
+namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.MiniCamera
 {
     public class MiniCamera : MonoBehaviour
     {

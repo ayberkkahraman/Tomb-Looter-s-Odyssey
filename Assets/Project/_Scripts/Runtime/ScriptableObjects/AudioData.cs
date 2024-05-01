@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project._Scripts.Runtime.ScriptableObjects.Audio
+namespace Project._Scripts.Runtime.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "AudioData", menuName = "Game/Audio")]
     public class AudioData : ScriptableObject
@@ -21,9 +21,8 @@ namespace Project._Scripts.Runtime.ScriptableObjects.Audio
         {
             BGM,
             MainSfx,
-            SecondaryEffect,
             SecondarySfx,
-            Effect
+            AmbientSfx
         }
     #endregion
     }

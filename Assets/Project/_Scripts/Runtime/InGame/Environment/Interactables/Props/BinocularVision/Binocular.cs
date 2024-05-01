@@ -1,13 +1,12 @@
 using Project._Scripts.Runtime.InGame.Environment.Interactables.Base;
 using Project._Scripts.Runtime.Interfaces;
-using UnityEngine;
 
-namespace Project._Scripts.Runtime.InGame.Environment.Interactables.BinocularVision
+namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.BinocularVision
 {
     public class Binocular : InteractableBase, IInteractable
     {
         public bool Activated { get; set; }
-        public MiniCamera MiniCamera;
+        public MiniCamera.MiniCamera MiniCamera;
 
         private bool _canInteract;
 
