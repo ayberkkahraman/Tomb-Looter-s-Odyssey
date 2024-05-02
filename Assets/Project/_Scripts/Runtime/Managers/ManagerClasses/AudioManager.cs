@@ -22,9 +22,9 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
         [SerializeField] private GameObject SecondarySfxPoolObject;
         [SerializeField] private GameObject AmbientSfxPoolObject;
         
-        private List<AudioSource> _mainSfxPool = new();
-        private List<AudioSource> _secondarySfxPool = new();
-        private List<AudioSource> _ambientSfxPool = new();
+        private List<AudioSource> _mainSfxPool;
+        private List<AudioSource> _secondarySfxPool;
+        private List<AudioSource> _ambientSfxPool;
 
         private List<AudioData> _audioDatas;
 
@@ -229,9 +229,7 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
         /// <returns></returns>
         public AudioData GetAudioByName(string audioName)
         {
-            return !_audioDatas.Exists(x => x.name == audioName) 
-                ? ScriptableObject.CreateInstance<AudioData>() 
-                : _audioDatas.Find(x => x.name == audioName);
+            return _audioDatas.Find(x => x.name == audioName);
         }
 
         public AudioData GetAudioDataByClip(AudioClip clip) => _audioDatas.ToList().Find(x => x.AudioClip == clip);

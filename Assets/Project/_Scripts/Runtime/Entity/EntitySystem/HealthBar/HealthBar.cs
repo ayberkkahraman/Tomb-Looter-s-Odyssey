@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project._Scripts.Runtime.Entity.EntitySystem.HealthBar
+namespace Project._Scripts.Runtime.Entity.EntitySystem
 {
   public class HealthBar : HealthBarBase
   {
@@ -42,9 +42,9 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.HealthBar
       _activated = true;
       _timer = 0f;
       
-      Bar.fillAmount = Unit.Health / Unit.MaxHealth;
+      Bar.fillAmount = Unit.CurrentHealth / Unit.MaxHealth;
 
-      if (!(Unit.Health <= 0))
+      if (!(Unit.CurrentHealth <= 0))
         return;
       
       Invoke(nameof(CloseHealthBar), 1f);

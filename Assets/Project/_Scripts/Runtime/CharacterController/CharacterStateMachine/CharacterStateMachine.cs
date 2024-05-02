@@ -47,7 +47,6 @@ namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
       InitializeInput();
       InitializeState();
     }
-
     private void OnEnable()
     {
       Init();
@@ -56,21 +55,22 @@ namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
     {
       CurrentState.UpdateState();
     }
-
-    private void LateUpdate()
-    {
-      CurrentState.LateUpdateState();
-    }
-
     private void FixedUpdate()
     {
       CurrentState.FixedUpdateState();
     }
     #endregion
-    #region Init / DeInit
+    #region Initialization
     private void Init()
     {
       CanRotate = true;
+    }
+    private void InitializeState()
+    {
+      StateFactory ??= new CharacterStateFactory(this);
+      CurrentState = StateFactory.Idle();
+      CurrentState.EnterState();
+      CurrentState.InitializeState();
     }
     private void InitializeComponents()
     {
@@ -78,14 +78,13 @@ namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
       Animator = GetComponent<Animator>();
       Collider2D = GetComponent<CapsuleCollider2D>();
     }
-
     private void InitializeInput()
     {
       InputController.ControllerInput.CharacterController.Move.started += MovementConfiguration;
       InputController.ControllerInput.CharacterController.Move.canceled += MovementConfiguration;
       InputController.ControllerInput.CharacterController.Move.performed += MovementConfiguration;
     }
-  #endregion
+    #endregion
     
     #region Input
         
@@ -102,16 +101,6 @@ namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
     #endregion
     #region Condition Configuration
     public bool IsMoving() => InputDirection != Vector2.zero;
-    #endregion
-
-    #region State Configuritaion
-    private void InitializeState()
-    {
-      StateFactory ??= new CharacterStateFactory(this);
-      CurrentState = StateFactory.Idle();
-      CurrentState.EnterState();
-      CurrentState.InitializeState();
-    }
     #endregion
   }
 }

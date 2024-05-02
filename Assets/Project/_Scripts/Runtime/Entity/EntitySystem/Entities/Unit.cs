@@ -1,42 +1,18 @@
-﻿using Project._Scripts.Runtime.Managers.Manager;
-using Project._Scripts.Runtime.Managers.ManagerClasses;
-using UnityEngine;
+﻿using Project._Scripts.Runtime.Interfaces;
 
 namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
 {
     public class Unit : LivingEntity
     {
-        protected float DefaultCooldown;
-        public float CurrentCooldown { get; set; }
-        protected static readonly int AttackAnimationHash = Animator.StringToHash("Attack");
-
-        protected CameraManager CameraManager;
-        protected override void Start()
+        protected override void Die()
         {
-            base.Start();
-
-            CameraManager = ManagerContainer.Instance.GetInstance<CameraManager>();
-            DefaultCooldown = UnitData.AttackCooldown;
-            CurrentCooldown = UnitData.AttackCooldown;
-        }
-
-        public virtual void Update()
-        {
-            if (CurrentCooldown < DefaultCooldown) CurrentCooldown += Time.deltaTime;
+            IAudioOwner.AudioManager.PlayAudio(UnitAudio.DeathAudio);
+            Animator.SetTrigger(DeathAnimationHash);
+            Animator.speed = 1f;
         }
         public override void Attack()
         {
             
-        }
-        protected void CheckForAttack()
-        {
-            if(Health <= 0) return;
-            
-            if(CurrentCooldown < DefaultCooldown) return;
-            
-            Attack();
-            
-            CurrentCooldown = 0;
         }
     }
 }

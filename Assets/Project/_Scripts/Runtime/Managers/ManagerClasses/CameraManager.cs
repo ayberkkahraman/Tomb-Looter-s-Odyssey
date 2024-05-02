@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +83,7 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
             CurrentCamera.Follow = targetTransform;
         }
 
+        public static void ShakeCamera(Action action) => action?.Invoke();
 
         public void ShakeCamera()
         {

@@ -36,10 +36,6 @@ namespace Project._Scripts.Runtime.CharacterController.States
 
       AccelerationConfiguration();
     }
-    public override void LateUpdateState()
-    {
-
-    }
     public override void FixedUpdateState()
     {
       Move();
@@ -53,10 +49,6 @@ namespace Project._Scripts.Runtime.CharacterController.States
     {
       if(!Context.IsMovementButtonPressed){SwitchState(Factory.Idle());}
       else SetAnimations();
-    }
-    public override void InitializeSubState()
-    {
-      
     }
     public override void InitializeState()
     {

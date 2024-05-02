@@ -37,10 +37,6 @@ namespace Project._Scripts.Runtime.CharacterController.States
     {
       CheckSwitchStates();
     }
-    public override void LateUpdateState()
-    {
-
-    }
     protected override void ExitState()
     {
       
@@ -49,10 +45,6 @@ namespace Project._Scripts.Runtime.CharacterController.States
     {
       Context.Interactable.EndInteraction();
       SwitchState(Factory.Idle());
-    }
-    public override void InitializeSubState()
-    {
-      
     }
     public override void InitializeState()
     {

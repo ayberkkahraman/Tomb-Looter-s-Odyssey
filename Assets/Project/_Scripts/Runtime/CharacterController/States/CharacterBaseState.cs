@@ -37,12 +37,8 @@ namespace Project._Scripts.Runtime.CharacterController.States
             public abstract void EnterState();
             public abstract void FixedUpdateState();
             public abstract void UpdateState();
-            public abstract void LateUpdateState();
             protected abstract void ExitState();
             public abstract void CheckSwitchStates();
-            public abstract void InitializeSubState();
-            public virtual void DrawGizmos(){}
-
             public abstract void InitializeState();
             
             public void SwitchState(CharacterBaseState newState)
@@ -54,8 +50,5 @@ namespace Project._Scripts.Runtime.CharacterController.States
                   Context.CurrentState.EnterState();
                   
             }
-            protected virtual void SetSuperState(){}
-            protected virtual void SetSubState(){}
-
       }
 }

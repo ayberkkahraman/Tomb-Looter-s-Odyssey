@@ -41,19 +41,11 @@ namespace Project._Scripts.Runtime.CharacterController.States
     public override void UpdateState()
     {
     }
-    public override void LateUpdateState()
-    {
-      
-    }
     protected override void ExitState()
     {
     
     }
     public override void CheckSwitchStates()
-    {
-    
-    }
-    public override void InitializeSubState()
     {
     
     }

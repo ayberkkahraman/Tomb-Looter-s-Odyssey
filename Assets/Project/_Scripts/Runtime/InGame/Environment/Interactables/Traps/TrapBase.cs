@@ -1,4 +1,5 @@
 ﻿using Project._Scripts.Runtime.Entity.EntitySystem;
+using Project._Scripts.Runtime.Entity.EntitySystem.Entities;
 using Project._Scripts.Runtime.InGame.Environment.Interactables.Base;
 using UnityEngine;
 
@@ -61,7 +62,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Traps
     protected virtual void Trigger(LivingEntity entity)
     {
       // ReSharper disable once RedundantJumpStatement
-      if(Entity.Health <= 0) return;
+      if(Entity.CurrentHealth <= 0) return;
     }
   }
 }

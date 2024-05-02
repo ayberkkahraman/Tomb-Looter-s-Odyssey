@@ -35,20 +35,12 @@ namespace Project._Scripts.Runtime.CharacterController.States
       CheckSwitchStates();
     }
 
-    public override void LateUpdateState()
-    {
-
-    }
     protected override void ExitState()
     {
     }
     public override void CheckSwitchStates()
     {
       if(Context.IsMoving()){SwitchState(Factory.Walk());}
-    }
-    public override void InitializeSubState()
-    {
-      
     }
     public override void InitializeState()
     {

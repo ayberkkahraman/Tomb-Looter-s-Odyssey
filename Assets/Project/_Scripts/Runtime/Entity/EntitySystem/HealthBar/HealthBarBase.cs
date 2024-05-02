@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project._Scripts.Runtime.Entity.EntitySystem.HealthBar
+namespace Project._Scripts.Runtime.Entity.EntitySystem
 {
     public class HealthBarBase : MonoBehaviour
     {
@@ -22,8 +22,8 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.HealthBar
 
         public virtual  void UpdateHealthBar(int health)
         {
-            Bar.fillAmount = Unit.Health / Unit.MaxHealth;
-            if(Unit.Health <= 0) gameObject.SetActive(false);
+            Bar.fillAmount = Unit.CurrentHealth / Unit.MaxHealth;
+            if(Unit.CurrentHealth <= 0) gameObject.SetActive(false);
         }
     }
 }
