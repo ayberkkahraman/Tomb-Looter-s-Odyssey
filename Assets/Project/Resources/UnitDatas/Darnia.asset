@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecc91f632494d028d9e934d05e056b7, type: 3}
   m_Name: Darnia
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 4
   Damage: 0
   TargetDetectRange: 0
   DamageRadius: 0

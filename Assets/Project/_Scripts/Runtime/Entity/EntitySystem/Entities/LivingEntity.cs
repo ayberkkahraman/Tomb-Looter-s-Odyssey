@@ -5,6 +5,7 @@ using Project._Scripts.Runtime.Managers.Manager;
 using Project._Scripts.Runtime.Managers.ManagerClasses;
 using Project._Scripts.Runtime.ScriptableObjects;
 using UnityEngine;
+// ReSharper disable All
 
 namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
 {
@@ -53,27 +54,12 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
 
         protected virtual void OnEnable()
         {
-            OnTakeDamageHandler += TakeDamage;
-            OnDieHandler += Die;
-            OnAttackHandler += Attack;
-
-            EntityProperty = new EntityProperty(TestMethod, GiveDamageTest, TestAttack);
-            
-            EntityProperty.OnTakeDamageHandler += TestMethod;
-            
-            EntityProperty.OnDieHandler?.Invoke();
+            EntityProperty = new EntityProperty(TakeDamage, Attack, Die);
         }
 
-        public void GiveDamageTest(int i) => Debug.Log("Damage given...");
-        public void TestAttack() => Debug.Log("Attack");
-        public void TestMethod(string testValue) => Debug.Log(testValue);
-        public void TestMethod(int testDamage) => Debug.Log($"Damage value is : {testDamage}");
-        
         protected virtual void OnDisable()
         {
-            OnTakeDamageHandler -= TakeDamage;
-            OnDieHandler -= Die;
-            OnAttackHandler -= Attack;
+            EntityProperty.UnSubscribe(TakeDamage, Attack, Die);
         }
         #endregion
 
@@ -136,18 +122,29 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
     public class EntityProperty
     {
         public delegate void OnTakeDamage(int damage);
-        public delegate void OnAttack(int damage);
+        public delegate void OnAttack(LivingEntity entity);
         public delegate void OnDie();
-
-        [CanBeNull] public OnTakeDamage OnTakeDamageHandler;
-        [CanBeNull] public OnAttack OnAttackHandler;
-        [CanBeNull] public OnDie OnDieHandler;
+        [CanBeNull] public OnTakeDamage OnTakeDamageHandler{get; set;}
+        [CanBeNull] public OnAttack OnAttackHandler{get; set;}
+        [CanBeNull] public OnDie OnDieHandler{get; set;}
 
         public EntityProperty([CanBeNull] OnTakeDamage takeDamage, [CanBeNull] OnAttack attack, [CanBeNull] OnDie die)
         {
-            OnTakeDamageHandler = takeDamage;
-            OnAttackHandler = attack;
-            OnDieHandler = die;
+            Subscribe(takeDamage, attack, die);
+        }
+        
+        public void Subscribe([CanBeNull] OnTakeDamage takeDamage, [CanBeNull] OnAttack attack, [CanBeNull] OnDie die)
+        {
+            OnTakeDamageHandler += takeDamage;
+            OnAttackHandler += attack;
+            OnDieHandler += die;
+        }
+
+        public void UnSubscribe([CanBeNull] OnTakeDamage takeDamage, [CanBeNull] OnAttack attack, [CanBeNull] OnDie die)
+        {
+            OnTakeDamageHandler -= takeDamage;
+            OnAttackHandler -= attack;
+            OnDieHandler -= die;
         }
     }
     #endregion
