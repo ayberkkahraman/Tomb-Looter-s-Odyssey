@@ -44,7 +44,7 @@ namespace Project._Scripts.Runtime.Entity.Projectile
       if(other.gameObject.layer != LayerMask.NameToLayer("Player")) return;
 
       Player entity = other.gameObject.GetComponent<Player>();
-      Owner.OnAttackHandler(entity);
+      Owner.EntityProperty.OnAttackHandler!(entity);
       entity.GetComponent<Rigidbody2D>().AddForce(transform.right * Owner.UnitData.ForceStrength, ForceMode2D.Impulse);
       
       DestroyObject();   
