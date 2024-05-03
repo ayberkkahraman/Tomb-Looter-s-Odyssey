@@ -1,5 +1,6 @@
 using System;
 using Project._Scripts.Runtime.Interfaces;
+using Project._Scripts.Runtime.Managers.ManagerClasses;
 using Project._Scripts.Runtime.ScriptableObjects;
 using UnityEngine;
 // ReSharper disable All
@@ -9,6 +10,9 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
     public abstract class LivingEntity : MonoBehaviour, IAudioOwner, ICameraShaker
     {
         #region Fields
+        public ICameraShaker CameraShaker { get; set; }
+        public IAudioOwner AudioOwner { get; set; }
+
         public HealthBar HealthBar;
         public UnitData UnitData;
         public UnitAudio UnitAudio;
@@ -33,7 +37,9 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
         protected virtual void Awake()
         {
             InitializeComponents();
+            InitializeInterfaces();
         }
+        
         protected virtual void Start()
         {
             MaxHealth = UnitData.Health;
@@ -48,6 +54,12 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
         protected virtual void InitializeComponents()
         {
             Animator = GetComponent<Animator>();
+        }
+
+        protected virtual void InitializeInterfaces()
+        {
+            CameraShaker = this;
+            AudioOwner = this;
         }
         
         #endregion
