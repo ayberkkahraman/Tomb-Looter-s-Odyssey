@@ -2,6 +2,7 @@
 {
   public interface IDamageable
   {
-    public delegate void TakeDamage();
+    public IDamageable Damageable { get; set; }
+    public void TakeDamage(int damage);
   }
 }

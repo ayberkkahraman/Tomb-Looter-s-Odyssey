@@ -1,15 +1,15 @@
 using System;
 using Project._Scripts.Runtime.Interfaces;
-using Project._Scripts.Runtime.Managers.ManagerClasses;
 using Project._Scripts.Runtime.ScriptableObjects;
 using UnityEngine;
 // ReSharper disable All
 
 namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
 {
-    public abstract class LivingEntity : MonoBehaviour, IAudioOwner, ICameraShaker
+    public abstract class LivingEntity : MonoBehaviour, IDamageable, IAudioOwner, ICameraShaker
     {
         #region Fields
+        public IDamageable Damageable { get; set; }
         public ICameraShaker CameraShaker { get; set; }
         public IAudioOwner AudioOwner { get; set; }
 
@@ -58,6 +58,7 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
 
         protected virtual void InitializeInterfaces()
         {
+            Damageable = this;
             CameraShaker = this;
             AudioOwner = this;
         }
@@ -75,9 +76,7 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
             
             entity.EntityProperty.OnTakeDamageHandler(UnitData.Damage);
             
-            if(!string.IsNullOrEmpty(UnitAudio.AttackAudio))
-                IAudioOwner.AudioManager.PlayAudio(UnitAudio.AttackAudio);
-
+            if(!string.IsNullOrEmpty(UnitAudio.AttackAudio)) AudioOwner.Play(UnitAudio.AttackAudio);
         }
         public void TakeDamage(int damage)
         {
@@ -89,7 +88,7 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
 
             if (CurrentHealth <= 0) { EntityProperty.OnDieHandler(); return;}
             
-            IAudioOwner.AudioManager.PlayAudio(UnitAudio.TakeDamageAudio);
+            AudioOwner.Play(UnitAudio.TakeDamageAudio);
             
             Animator.SetTrigger(TakeHitAnimationHash);
         }

@@ -1,9 +1,7 @@
 ﻿using System;
 using Project._Scripts.Runtime.CharacterController.CharacterDirectionHandler;
 using Project._Scripts.Runtime.Interfaces;
-using Project._Scripts.Runtime.Library.Extensions;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
 {
@@ -18,7 +16,6 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
     #region Actions
     public Action TriggerInteractCallback;
     public Action EndInteractCallback;
-    
     public Action<bool> TriggerInteractCallbackWithCondition;
     #endregion
 
@@ -66,7 +63,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Base
   [Serializable]
   public class BaseSettings
   {
-    public bool DestroyAfterTriggerEnd = false;
-    public bool InteractOnTrigger = true;
+    public bool DestroyAfterTriggerEnd;
+    public bool InteractOnTrigger;
   }
 }
