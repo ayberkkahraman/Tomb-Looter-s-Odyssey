@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e3c6d58105e40dfbdd6cdfc75a2f5a4, type: 3}
   m_Name: Darnia
   m_EditorClassIdentifier: 
-  MovementSpeed: 22.5
+  MovementSpeed: 4
