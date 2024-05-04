@@ -41,10 +41,10 @@ namespace Project._Scripts.Runtime.Entity.Projectile
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-      if(other.gameObject.layer != LayerMask.NameToLayer("Player")) return;
+      if(other.gameObject.layer != LayerMask.NameToLayer($"Player")) return;
 
       Player entity = other.gameObject.GetComponent<Player>();
-      Owner.EntityProperty.OnAttackHandler!(entity);
+      Owner.EntityProperty.OnAttackHandler!.Invoke(entity);
       entity.GetComponent<Rigidbody2D>().AddForce(transform.right * Owner.UnitData.ForceStrength, ForceMode2D.Impulse);
       
       DestroyObject();   

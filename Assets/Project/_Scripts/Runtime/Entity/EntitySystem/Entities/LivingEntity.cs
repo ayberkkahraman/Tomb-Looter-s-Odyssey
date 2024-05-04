@@ -1,8 +1,8 @@
 using System;
 using Project._Scripts.Runtime.Interfaces;
+using Project._Scripts.Runtime.Library.SubSystems;
 using Project._Scripts.Runtime.ScriptableObjects;
 using UnityEngine;
-// ReSharper disable All
 
 namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
 {
@@ -45,12 +45,12 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
             MaxHealth = UnitData.Health;
             CurrentHealth = MaxHealth;
         }
-        
-        protected virtual void OnEnable() => EntityProperty = new EntityProperty(TakeDamage, Attack, Die);
-        protected virtual void OnDisable() => EntityProperty.UnSubscribe(TakeDamage, Attack, Die);
+
+        protected virtual void OnEnable() => InitializeEntityProperty();
+        protected virtual void OnDisable() => DeInitializeEntityProperty();
         #endregion
 
-        #region Initialization
+        #region Initialization / DeInitialization
         protected virtual void InitializeComponents()
         {
             Animator = GetComponent<Animator>();
@@ -61,6 +61,23 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
             Damageable = this;
             CameraShaker = this;
             AudioOwner = this;
+        }
+
+        protected virtual void InitializeEntityProperty()
+        {
+            EntityProperty = new EntityProperty
+            {
+                OnDieHandler = new Property<string>(_ => Die()),
+                OnTakeDamageHandler = new Property<int>(TakeDamage),
+                OnAttackHandler = new Property<LivingEntity>(Attack)
+            };
+        }
+        
+        protected virtual void DeInitializeEntityProperty()
+        {
+            EntityProperty.OnDieHandler.UnSubscribe(_ => Die());
+            EntityProperty.OnTakeDamageHandler.UnSubscribe(TakeDamage);
+            EntityProperty.OnAttackHandler.UnSubscribe(Attack);
         }
         
         #endregion
@@ -74,7 +91,7 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
             
             if(entity.CurrentHealth <= 0 ) return;
             
-            entity.EntityProperty.OnTakeDamageHandler(UnitData.Damage);
+            entity.EntityProperty.OnTakeDamageHandler.Invoke(UnitData.Damage);
             
             if(!string.IsNullOrEmpty(UnitAudio.AttackAudio)) AudioOwner.Play(UnitAudio.AttackAudio);
         }
@@ -86,7 +103,7 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem.Entities
             
             if(HealthBar != null){HealthBar.UpdateHealthBar(damage);}
 
-            if (CurrentHealth <= 0) { EntityProperty.OnDieHandler(); return;}
+            if (CurrentHealth <= 0) { EntityProperty.OnDieHandler.Invoke(); return;}
             
             AudioOwner.Play(UnitAudio.TakeDamageAudio);
             

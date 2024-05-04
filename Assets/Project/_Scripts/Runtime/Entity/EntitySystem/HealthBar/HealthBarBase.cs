@@ -12,7 +12,7 @@ namespace Project._Scripts.Runtime.Entity.EntitySystem
         protected virtual void Start()
         {
             Unit = GetComponentInParent<Unit>();
-            Unit.EntityProperty.OnTakeDamageHandler += UpdateHealthBar;
+            Unit.EntityProperty.OnTakeDamageHandler.Subscribe(UpdateHealthBar);
         }
 
         protected virtual  void LateUpdate()

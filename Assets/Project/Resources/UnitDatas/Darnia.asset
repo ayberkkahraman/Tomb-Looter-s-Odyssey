@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Darnia
   m_EditorClassIdentifier: 
   Health: 4
-  Damage: 0
+  Damage: 44
   TargetDetectRange: 0
   DamageRadius: 0
   AttackCooldown: 0
