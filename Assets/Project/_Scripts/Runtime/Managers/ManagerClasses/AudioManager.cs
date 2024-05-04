@@ -212,13 +212,12 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
 
             if (audioData is null)
             {
-                Debug.Log($"There is no audio like{audioName}");
+                Debug.Log($"There is no audio like : <color=red>{audioName}</color>");
                 return;
             }
-
             PlayAudio(audioData);
         }
-  
+
         #endregion
 
         #region Audio Gathering

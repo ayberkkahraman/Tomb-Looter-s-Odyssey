@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Project._Scripts.Runtime.CharacterController.StateFactory;
+using Project._Scripts.Runtime.CharacterController.StateMachine.Core;
 
-namespace Project._Scripts.Runtime.CharacterController.States
+namespace Project._Scripts.Runtime.CharacterController.StateMachine.States
 {
      public abstract class CharacterBaseState
       {
-            protected readonly CharacterStateMachine.CharacterStateMachine Context;
+            protected readonly CharacterStateMachine Context;
             protected readonly CharacterStateFactory Factory;
 
             protected HashSet<CharacterBaseState> States;
@@ -29,7 +29,7 @@ namespace Project._Scripts.Runtime.CharacterController.States
             /// <param name="speedMultiplier"></param>
             protected abstract void HandleGravity(float speedMultiplier = 1f);
 
-            protected CharacterBaseState(CharacterStateMachine.CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory)
+            protected CharacterBaseState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory)
             {
                   Context = currentContext;
                   Factory = characterStateFactory;
@@ -40,14 +40,14 @@ namespace Project._Scripts.Runtime.CharacterController.States
             protected abstract void ExitState();
             public abstract void CheckSwitchStates();
             public abstract void InitializeState();
-            
-            public void SwitchState(CharacterBaseState newState)
+
+            protected void SwitchState(CharacterBaseState newState)
             {
-                  Context.PreviousState = this;
-                  Context.NextState = newState;
+                  Context.Core.PreviousState = this;
+                  Context.Core.NextState = newState;
                   ExitState(); 
-                  Context.CurrentState = newState;
-                  Context.CurrentState.EnterState();
+                  Context.Core.CurrentState = newState;
+                  Context.Core.CurrentState.EnterState();
                   
             }
       }

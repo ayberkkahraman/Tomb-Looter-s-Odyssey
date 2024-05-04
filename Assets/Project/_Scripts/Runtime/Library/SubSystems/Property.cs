@@ -24,6 +24,6 @@ namespace Project._Scripts.Runtime.Library.SubSystems
     {
       methods.ToList().ForEach(x => { PropertyDelegate = Delegate.Remove(PropertyDelegate, x); });
       return this;
-    } 
+    }
   }
 }

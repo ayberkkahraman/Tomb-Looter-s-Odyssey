@@ -1,25 +1,18 @@
-﻿using Project._Scripts.Runtime.CharacterController.StateFactory;
-using Project._Scripts.Runtime.CharacterController.States;
+﻿using Project._Scripts.Runtime.CharacterController.ScriptableObjects;
 using Project._Scripts.Runtime.Interfaces;
 using Project._Scripts.Runtime.Library.Controller;
+using Project._Scripts.Runtime.Library.SubSystems;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
+namespace Project._Scripts.Runtime.CharacterController.StateMachine.Core
 {
   [RequireComponent(typeof(Animator))]
   [RequireComponent(typeof(Rigidbody2D))]
   public class CharacterStateMachine : MonoBehaviour
   {
-
     #region State
-    public CharacterStateFactory StateFactory { get; set; }
-    
-    public CharacterBaseState CurrentState { get; set; }
-
-    public CharacterBaseState PreviousState { get; set; }
-
-    public CharacterBaseState NextState { get; set; }
+    public StateCore Core { get; set; }
     #endregion
 
     #region Components
@@ -29,48 +22,25 @@ namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
     public CapsuleCollider2D Collider2D { get; set; }
     #endregion
     #region Fields
-    
-    [HideInInspector] public Vector2 InputDirection;
+    public CharacterLocomotionData CharacterLocomotionData;
+    public Vector2 InputDirection { get; set; }
     public bool IsMovementButtonPressed { get; set; }
-
-    [Header("Locomotion")]
-    [Range(0f,30f)]public float MovementSpeed = 22.5f;
     public float CurrentMovementSpeed { get; set; }
-    public bool CanRotate { get; set; }
-
     #endregion
 
     #region Unity Functions
-    private void Awake()
-    {
-      InitializeComponents();
-      InitializeInput();
-      InitializeState();
-    }
-    private void OnEnable()
-    {
-      Init();
-    }
-    private void Update()
-    {
-      CurrentState.UpdateState();
-    }
-    private void FixedUpdate()
-    {
-      CurrentState.FixedUpdateState();
-    }
+    private void Awake() => new Property<string>(_ => InitializeInput()).Subscribe(_ => InitializeComponents(), _ => InitializeState()).Invoke();
+    private void Update() => Core.CurrentState.UpdateState();
+    private void FixedUpdate() => Core.CurrentState.FixedUpdateState();
     #endregion
     #region Initialization
-    private void Init()
-    {
-      CanRotate = true;
-    }
     private void InitializeState()
     {
-      StateFactory ??= new CharacterStateFactory(this);
-      CurrentState = StateFactory.Idle();
-      CurrentState.EnterState();
-      CurrentState.InitializeState();
+      Core = new StateCore();
+      Core.StateFactory ??= new CharacterStateFactory(this);
+      Core.CurrentState = Core.StateFactory.Idle();
+      Core.CurrentState.EnterState();
+      Core.CurrentState.InitializeState();
     }
     private void InitializeComponents()
     {
@@ -99,7 +69,7 @@ namespace Project._Scripts.Runtime.CharacterController.CharacterStateMachine
       IsMovementButtonPressed = InputDirection != Vector2.zero;
     }
     #endregion
-    #region Condition Configuration
+    #region Condition Checkers
     public bool IsMoving() => InputDirection != Vector2.zero;
     #endregion
   }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Project._Scripts.Runtime.CharacterController.CharacterStateMachine;
+using Project._Scripts.Runtime.CharacterController.StateMachine.Core;
 using Project._Scripts.Runtime.Managers.Manager;
 using Project._Scripts.Runtime.Managers.ManagerClasses;
 using Project._Scripts.Runtime.ScriptableObjects;

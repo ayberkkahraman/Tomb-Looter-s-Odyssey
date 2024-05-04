@@ -1,7 +1,7 @@
-﻿using Project._Scripts.Runtime.CharacterController.StateFactory;
+﻿using Project._Scripts.Runtime.CharacterController.StateMachine.Core;
 using UnityEngine;
 
-namespace Project._Scripts.Runtime.CharacterController.States
+namespace Project._Scripts.Runtime.CharacterController.StateMachine.States
 {
   public class CharacterWalkState : CharacterBaseState
   {
@@ -11,21 +11,14 @@ namespace Project._Scripts.Runtime.CharacterController.States
     
     private static readonly int DirectionX = Animator.StringToHash("DirectionX");
     private static readonly int DirectionY = Animator.StringToHash("DirectionY");
-    public CharacterWalkState(CharacterStateMachine.CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory)
-    {
-    }
+    public CharacterWalkState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory){}
+
     protected override void AccelerationConfiguration(float multiplier = 1, bool rotationSmooth = true)
     {
       _movementDirection = Context.InputDirection;
     }
-    protected override void RotationConfiguration(float multiplier = 1)
-    {
-
-    }
-    protected override void HandleGravity(float speedMultiplier = 1)
-    {
-
-    }
+    protected override void RotationConfiguration(float multiplier = 1){}
+    protected override void HandleGravity(float speedMultiplier = 1){}
     public override void EnterState()
     {
       Context.Animator.SetBool(IsMoving, true);
@@ -50,10 +43,7 @@ namespace Project._Scripts.Runtime.CharacterController.States
       if(!Context.IsMovementButtonPressed){SwitchState(Factory.Idle());}
       else SetAnimations();
     }
-    public override void InitializeState()
-    {
-      
-    }
+    public override void InitializeState(){}
     
     /// <summary>
     /// Handles the movement
