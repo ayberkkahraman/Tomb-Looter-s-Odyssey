@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Project._Scripts.Runtime.InGame.Environment.Interactables.Base;
 using Project._Scripts.Runtime.Library.Controller;
 
@@ -7,7 +8,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
   public class Lever : InteractableBase
   {
     #region Fields
-    public List<Gate> TargetGates = new();
+    public List<Gate> TargetGates;
     public bool IsInteracting { get; set; }
     #endregion
     
@@ -34,7 +35,10 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
     /// <summary>
     /// Triggers interactions of the gates
     /// </summary>
-    public void TriggerGates() => TargetGates.ForEach(x => x.TriggerInteractCallback?.Invoke());
+    public void TriggerGates() => TargetGates.ForEach(x =>
+    {
+      x.TriggerInteractCallbackWithCondition?.Invoke(x.CurrentState == Gate.State.Closed);
+    });
     #endregion
 
     #region Animation Events

@@ -6,12 +6,28 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
   public class Gate : InteractableBase
   {
     #region Fields
+    public enum State{Open, Closed}
+    public State DefaultState;
+    public State CurrentState { get; set; }
     private static readonly int IsOpen = Animator.StringToHash("IsOpen");
     #endregion
     
     #region Unity Functions
-    public void Start() => TriggerInteractCallback = TriggerGate;
     protected override void Awake(){base.Awake(); TriggerInteractCallbackWithCondition = TriggerGate;}
+    public void Start()
+    {
+      TriggerInteractCallback = TriggerGate;
+      
+      switch ( DefaultState )
+      {
+        case State.Open:
+          TriggerInteractCallbackWithCondition(true);
+          break;
+        case State.Closed:
+          TriggerInteractCallbackWithCondition(false);
+          break;
+      }
+    }
     #endregion
 
     #region Gate Configuration
@@ -32,6 +48,7 @@ namespace Project._Scripts.Runtime.InGame.Environment.Interactables.Props.Dynami
     {
       Animator.SetTrigger(InteractAnimationHash);
       Animator.SetBool(IsOpen, condition);
+      CurrentState = condition ? State.Open : State.Closed;
     }
     #endregion
 
