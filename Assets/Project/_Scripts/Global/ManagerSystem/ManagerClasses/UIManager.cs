@@ -1,4 +1,4 @@
-using Project._Scripts.GameCore.UISystem.Elements.DialogueElements;
+// using Project._Scripts.GameCore.UISystem.Elements.DialogueElements;
 using Project._Scripts.ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -10,7 +10,7 @@ namespace Project._Scripts.Global.ManagerSystem.ManagerClasses
     {
         [Header("Dialogue")]
         public GameObject DialogueBox;
-        public DialogueOptionsHolder DialogueOptionsHolder;
+        // public DialogueOptionsHolder DialogueOptionsHolder;
         public TMP_Text DialogueText;
         public TMP_Text DialogueNameText;
         public TMP_Text CoinCount;
@@ -34,10 +34,10 @@ namespace Project._Scripts.Global.ManagerSystem.ManagerClasses
 
         public void UpdateDialogueOptions(DialogueOptionData dialogueOptionData)
         {
-            for (int i = 0; i < DialogueOptionsHolder.MaxIndexCount; i++)
-            {
-                DialogueOptionsHolder.DialogueOptions[i].Initialize(dialogueOptionData.DialogueOptions[i].Sentence);
-            }
+            // for (int i = 0; i < DialogueOptionsHolder.MaxIndexCount; i++)
+            // {
+            //     DialogueOptionsHolder.DialogueOptions[i].Initialize(dialogueOptionData.DialogueOptions[i].Sentence);
+            // }
         }
         
         public void UpdateDialogueText(string text)

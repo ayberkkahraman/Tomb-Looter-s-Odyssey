@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Project._Scripts.GameCore.UISystem.Elements.DialogueElements;
+// using Project._Scripts.GameCore.UISystem.Elements.DialogueElements;
 using Project._Scripts.Global.ManagerSystem.Core;
 using Project._Scripts.Library.InputSystem;
 using Project._Scripts.ScriptableObjects;
@@ -14,7 +14,7 @@ namespace Project._Scripts.Global.ManagerSystem.ManagerClasses
   public class DialogueManager : MonoBehaviour
   {
     public UIManager UIManager { get; set; }
-    public DialogueOptionsHolder DialogueOptionsHolder;
+    // public DialogueOptionsHolder DialogueOptionsHolder;
     public DialogueData DialogueData { get; set; }
     public bool IsDialogueActive;
 
@@ -148,8 +148,8 @@ namespace Project._Scripts.Global.ManagerSystem.ManagerClasses
 
     public void InitializeOptions()
     {
-      DialogueOptionsHolder.DialogueCallback = StartDialogue;
-      DialogueOptionsHolder.SetDialogueOptions(CurrentDialogueData.DialogueOptionData.DialogueOptions.Length);
+      // DialogueOptionsHolder.DialogueCallback = StartDialogue;
+      // DialogueOptionsHolder.SetDialogueOptions(CurrentDialogueData.DialogueOptionData.DialogueOptions.Length);
       UIManager.UpdateDialogueOptions(CurrentDialogueData.DialogueOptionData);
     }
 
