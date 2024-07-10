@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4486912936853154542}
   - component: {fileID: 5472865437537976375}
   - component: {fileID: 4451725456864435664}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Darnia
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -198,8 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab4ea84d18a4865945e3b6356f83fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputDirection: {x: 0, y: 0}
-  MovementSpeed: 4
+  CharacterLocomotionData: {fileID: 0}
 --- !u!114 &4451725456864435664
 MonoBehaviour:
   m_ObjectHideFlags: 0
